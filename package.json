@@ -1,0 +1,22 @@
+{
+  "name": "babel-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattzeunert/babel-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattzeunert/babel-workshop/issues"
+  },
+  "homepage": "https://github.com/mattzeunert/babel-workshop#readme",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  }
+}
