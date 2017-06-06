@@ -18,5 +18,9 @@
   "homepage": "https://github.com/mattzeunert/babel-workshop#readme",
   "devDependencies": {
     "jest": "^20.0.4"
+  },
+  "dependencies": {
+    "babel-traverse": "^6.24.1",
+    "babylon": "^6.17.2"
   }
 }
