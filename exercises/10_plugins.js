@@ -13,3 +13,5 @@ FunctionDeclaration(path) {
   }
 
   */
+
+  // tell ppl to check out the actual implemtnation: https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-exponentiation-operator/src/index.js#L10

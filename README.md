@@ -12,13 +12,17 @@ tell ppll how to find solutions
 - show how to debug jest
 
 
-
 ## Setup 
 
 -- ask ppl to check their node version
 
 -- have to intro jest somehow in case ppl aren't familiar with unit tests
 --> first code change has to be super super simple
+
+## How to do the exercises
+
+// where to find the source code, where to find solutions
+
 
 ## Resources:
 

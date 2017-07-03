@@ -37,8 +37,9 @@ export function getMathPowCall(base, exponent){
 // Manually constructing the AST is tedious, so you can use Babel template instead
 // Docs: https://github.com/babel/babel/tree/master/packages/babel-template
 import template from "babel-template";
-// Example: 
 /*
+    Example:
+
     var buildAlertCall = template(`alert(STRING)`)
     buildAlertCall({ STRING: t.StringLiteral("Hello") }) // ==> alert("Hello");
 */
