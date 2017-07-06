@@ -1,6 +1,6 @@
 # Workshop: Abstract syntax trees and writing custom Babel plugins
 
-Babel is JavaScript compiler that allows you to write code transformation rules. These transformations are based on the code's [AST] representation.
+Babel is JavaScript compiler that allows you to write code transformation rules. These transformations are based on the code's [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) representation.
 
 ## Why learn about ASTs?
 
