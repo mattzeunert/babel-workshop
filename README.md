@@ -14,8 +14,9 @@ tell ppll how to find solutions
 
 ## Setup 
 
+- `npm install`
+- `npm run test-watch`
 -- ask ppl to check their node version
-
 -- have to intro jest somehow in case ppl aren't familiar with unit tests
 --> first code change has to be super super simple
 

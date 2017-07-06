@@ -17,7 +17,15 @@ function turnNumbersIntoMathRandomCalls(babel) {
     return {
         visitor: {
             // You can path.replaceWith(newNode) to replace the current AST node
-            
+            // START_SOLUTION
+            NumericLiteral: function(path) {
+                const call = t.callExpression(
+                    t.memberExpression(t.identifier("Math"), t.identifier("random")),
+                    []
+                )
+                path.replaceWith(call)
+            }
+            // END_SOLUTION
         }
     }
 }
@@ -28,7 +36,18 @@ function turnExponentiationOperatorToMathPowCallPlugin(babel) {
     const t = babel.types
     return {
         visitor: {
-            
+            // START_SOLUTION   
+            BinaryExpression: function (path) {
+                if (path.node.operator !== "**") {
+                    return
+                }
+                let addCall = t.callExpression(
+                    t.memberExpression(t.identifier("Math"), t.identifier("pow")),
+                    [path.node.left, path.node.right]
+                )
+                path.replaceWith(addCall)
+            }
+            // END_SOLUTION
         }
     }
 }
@@ -39,7 +58,13 @@ function turnSthToSomethingPlugin(babel) {
     return {
         visitor: {
             // You can use `path.scope.rename(oldName, newName)` to rename a variable in the current scope
-            
+            // START_SOLUTION
+            FunctionDeclaration: function(path) {
+                if (path.node.id.name === "doStuff") {
+                    path.scope.rename("sth", "something");
+                }
+            }
+            // END_SOLUTION
         }
     }
 }

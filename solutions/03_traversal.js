@@ -18,7 +18,15 @@ export function countStringLiterals(code) {
 // Returns how many identifiers are used in the source code
 export function countIdentifiers(code) {
     let ast = babylon.parse(code)
-    
+    // START_SOLUTION
+    let count = 0;
+    traverse(ast, {
+        Identifier: function (path) {
+            count++;
+        }
+    });
+    return count
+    // END_SOLUTION
 }
 
 // Returns how many string literals with name i are used in the source code
@@ -28,7 +36,17 @@ export function countIdentifiersWithNameI(code) {
     // Paths also give you access to the parent node and information about the local scope
     // More info about paths: https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md#paths
     let ast = babylon.parse(code)
-    
+    // START_SOLUTION
+    let count = 0;
+    traverse(ast, {
+        Identifier: function (path) {
+            if (path.node.name === "i") {
+                count++;
+            }
+        }
+    });
+    return count
+    // END_SOLUTION
 }
 
 // Returns name of longest identifier
@@ -36,7 +54,16 @@ export function countIdentifiersWithNameI(code) {
 export function findLongestIdentifier(code) {
     var ast = babylon.parse(code)
     var longestIdentifier = "";
-    
+    // START_SOLUTION
+    traverse(ast, {
+        Identifier: function (path) {
+            var name = path.node.name
+            if (name.length > longestIdentifier.length) {
+                longestIdentifier =  name
+            }
+        }
+    });
+    // END_SOLUTION
     return longestIdentifier
 }
 
@@ -53,7 +80,17 @@ export function getNodeCountByType(code) {
     // You can use `enter` as a catch-all visitor, instead of a specific node type like `StringLiteral`
     var ast = babylon.parse(code)
     var nodesByType = {}
-    
+    // START_SOLUTION
+    traverse(ast, {
+        enter: function (path) {
+            var nodeType = path.node.type
+            if (!nodesByType[nodeType]) {
+                nodesByType[nodeType] = 0
+            }
+            nodesByType[nodeType]++
+        }
+    })
+    // END_SOLUTION
     return nodesByType
 }
 
