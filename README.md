@@ -1,49 +1,29 @@
 # Workshop: ASTs and writing custom Babel plugin
 
-tell ppll how to find solutions
+Babel is JavaScript compiler that allows you to write code transformation rules. These transformations are based on the [abstract syntax tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) representation of JavaScript code.
 
-## Why
+## Why lean about ASTs?
 
-- bg understanding
-- add functionalty
-- write codemods / rewrite code / migrate to new way
-
-- lint code with custom eslint plugins
-- show how to debug jest
-
+- Improve your background understanding of the JavaScript language
+- Write custom Babel plugins to support new JS features, add logging to your code, ...
+- Write custom codemods to automatically update your code
+- Write custom ESLint plugins
 
 ## Setup 
 
-- `npm install`
-- `npm run test-watch`
--- ask ppl to check their node version
--- have to intro jest somehow in case ppl aren't familiar with unit tests
---> first code change has to be super super simple
-
+Run `npm install`.
 ## How to do the exercises
 
-// where to find the source code, where to find solutions
+Run `npm run test-watch` to run the tests, then work through them one by one to make the tests pass.
 
+The code you need to change is in the `exercises` directory. Start with the [`01_parsing.js`](https://github.com/mattzeunert/babel-workshop/blob/master/exercises/01_parsing.js) file, then `02_constructions.js` etc.
+
+If you get stuck you can check the [solutions](https://github.com/mattzeunert/babel-workshop/tree/master/solutions), or ask me in person or by [creating an issue](https://github.com/mattzeunert/babel-workshop/issues).
 
 ## Resources:
 
 - [AST Explorer](https://astexplorer.net/): explore the JS syntax tree, write Babel plugins
 - [Babel Plugin Handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md): detailed guide on writing Babel plugins
 
-
-
-- why transform obj assign... first capture it, but also bc it shows you some of the edge cases you'll have to consider when writing babel plugins
-
-
--- feel free to check out actual implementation https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-exponentiation-operator/src/index.js#L10
-
-// i could just show slides of the manual traversal...
-
-// make sure ppl have reference material, like how to find available t.sthExpressions etc
-// what is state value that's passed into visitor?
-
-
-
-before asking ppl to start show how to look up in ast exploer, how to log stuff out etc... inspect in debugger ast tree
-
-Node 6
+- Workshop slides: TODO
+- [Video intro to ASTs](https://www.youtube.com/watch?v=CFQBHy8RCpg&feature=youtu.be) by [Kent C. Dodds](https://twitter.com/kentcdodds)
