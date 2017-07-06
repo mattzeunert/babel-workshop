@@ -20,7 +20,7 @@ The code you need to change is in the `exercises` directory. Start with the [`01
 
 If you get stuck you can check the [solutions](https://github.com/mattzeunert/babel-workshop/tree/master/solutions), or ask me in person or by [creating an issue](https://github.com/mattzeunert/babel-workshop/issues).
 
-## Resources:
+## Resources
 
 - [AST Explorer](https://astexplorer.net/): explore the JS syntax tree, write Babel plugins
 - [Babel Plugin Handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md): detailed guide on writing Babel plugins
