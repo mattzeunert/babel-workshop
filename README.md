@@ -24,5 +24,5 @@ If you get stuck you can check the [solutions](https://github.com/mattzeunert/ba
 - [AST Explorer](https://astexplorer.net/): explore the JS syntax tree, write Babel plugins
 - [Babel Plugin Handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md): detailed guide on writing Babel plugins
 
-- Workshop slides: TODO
+- [Workshop slides](https://slides.com/mattzeunert/fullstack-babel-workshop/)
 - [Video intro to ASTs](https://www.youtube.com/watch?v=CFQBHy8RCpg&feature=youtu.be) by [Kent C. Dodds](https://twitter.com/kentcdodds)
