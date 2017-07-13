@@ -1,3 +1,5 @@
+try it on windows vm
+
 // prob can go through first exercises in front of ppl,,, look at ast explorer
 
 -- ask ppl to check their node version

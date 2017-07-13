@@ -1,4 +1,4 @@
-import * as plugins from "./10_plugins"
+import * as plugins from "./04_plugins"
 
 describe("Babel Plugins", () => {
     function runTests(tests, fn) {

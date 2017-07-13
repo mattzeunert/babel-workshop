@@ -2,7 +2,7 @@
 
 Babel is JavaScript compiler that allows you to write code transformation rules. These transformations are based on the code's [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) representation.
 
-## Why learn about ASTs?
+## Why learn about abstract syntax trees?
 
 - Improve your background understanding of the JavaScript language
 - Write custom Babel plugins

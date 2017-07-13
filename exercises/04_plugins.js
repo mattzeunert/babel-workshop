@@ -44,7 +44,6 @@ function turnSthToSomethingPlugin(babel) {
     }
 }
 
-
 import * as babel from "babel-core"
 function applyPlugin(code, plugin) {
     // Babel `transform` combines these three steps:
@@ -68,23 +67,3 @@ export function turnExponentiationOperatorToMathPowCall(code) {
 export function turnSthToSomething(code) {
     return applyPlugin(code, turnSthToSomethingPlugin)
 }
-
-
-
-// babel plugin scleanup task: transform cake["hi"]  to cake.hi
-
-// log every assignment that is made
-
-/*
-FunctionDeclaration(path) {
-  path.scope.rename("n", "x");
-}
-- function square(n) {
--   return n * n;
-+ function square(x) {
-+   return x * x;
-  }N
-
-  */
-
-  // tell ppl to check out the actual implemtnation: https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-exponentiation-operator/src/index.js#L10
