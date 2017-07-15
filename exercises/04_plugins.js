@@ -5,7 +5,7 @@ function changeAllStringsToHiPlugin(babel){
     return {
         visitor: {
             StringLiteral: function(path){
-                path.node.value = "Hi"
+                path.node.value = "Hi";
             }
         }
     }
@@ -13,22 +13,40 @@ function changeAllStringsToHiPlugin(babel){
 
 // Should turn `1 + 2` into `Math.random() + Math.random()`
 function turnNumbersIntoMathRandomCalls(babel) {
-    const t = babel.types
+    const t = babel.types;
     return {
         visitor: {
             // You can path.replaceWith(newNode) to replace the current AST node
+			NumericLiteral: function (path) {
+
+                let newNode = t.callExpression(
+                    t.memberExpression(t.identifier('Math'), t.identifier('random')), []
+                );
+
+                path.replaceWith(newNode);
+            }
             
         }
     }
 }
 
-
 // Turns ES2016 `a ** b` into ES5 `Math.pow(a, b)`
 function turnExponentiationOperatorToMathPowCallPlugin(babel) {
-    const t = babel.types
+    const t = babel.types;
     return {
         visitor: {
-            
+            BinaryExpression: function (path) {
+                if (path.node.operator === '**') {
+					let leftOperand = path.node.left;
+					let rightOperand = path.node.right;
+
+					let newNode = t.callExpression(
+						t.memberExpression(t.identifier('Math'), t.identifier('pow')), [leftOperand, rightOperand]
+					);
+
+					path.replaceWith(newNode);
+				}
+            }
         }
     }
 }
@@ -36,10 +54,15 @@ function turnExponentiationOperatorToMathPowCallPlugin(babel) {
 // Renames the variable `sth` to `something` in the function called `doStuff`
 // Example: `function doStuff() {var sth = 5; sth++}` => `function doStuff(var something = 5; something++)`
 function turnSthToSomethingPlugin(babel) {
+	const t = babel.types;
     return {
         visitor: {
             // You can use `path.scope.rename(oldName, newName)` to rename a variable in the current scope
-            
+			FunctionDeclaration: function (path) {
+			    if (path.node.id.name === 'doStuff') {
+					path.scope.rename('sth', 'something');
+                }
+            }
         }
     }
 }

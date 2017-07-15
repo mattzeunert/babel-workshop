@@ -4,21 +4,29 @@ import traverse from "babel-traverse"
 // Returns how many string literals are used in the source code
 // Example: if code is `"Hello" + " World"` should return 2
 export function countStringLiterals(code) {
-    let ast = babylon.parse(code)
+    let ast = babylon.parse(code);
     let count = 0;
     traverse(ast, {
         // visitor for a certain node type
-        StringLiteral: function (path) {
+        StringLiteral: function () {
             count++;
         }
     });
-    return count
+    return count;
 }
 
 // Returns how many identifiers are used in the source code
 export function countIdentifiers(code) {
-    let ast = babylon.parse(code)
-    
+    let ast = babylon.parse(code);
+    let identifierCount = 0;
+
+    traverse(ast, {
+       Identifier: function () {
+           identifierCount++;
+       }
+    });
+
+    return identifierCount;
 }
 
 // Returns how many string literals with name i are used in the source code
@@ -27,17 +35,36 @@ export function countIdentifiersWithNameI(code) {
     // In the visitor you have access to the AST node via `path.node`
     // Paths also give you access to the parent node and information about the local scope
     // More info about paths: https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md#paths
-    let ast = babylon.parse(code)
-    
+    let ast = babylon.parse(code);
+    let iCount = 0;
+
+    traverse(ast, {
+        Identifier: function (path) {
+            if (path.node.name === 'i') {
+                iCount++;
+            }
+        }
+    });
+
+    return iCount;
 }
 
 // Returns name of longest identifier
 // Example: `abc + defg` ==> "defg"
 export function findLongestIdentifier(code) {
-    var ast = babylon.parse(code)
-    var longestIdentifier = "";
+    let ast = babylon.parse(code);
+    let longestIdentifier = '';
+
+    traverse(ast, {
+        Identifier: function (path) {
+            let { name } = path.node;
+            if (name > longestIdentifier) {
+				longestIdentifier = name;
+            }
+        }
+    });
     
-    return longestIdentifier
+    return longestIdentifier;
 }
 
 // Returns how many nodes of each type exist in the AST
@@ -51,10 +78,21 @@ export function findLongestIdentifier(code) {
 */
 export function getNodeCountByType(code) {
     // You can use `enter` as a catch-all visitor, instead of a specific node type like `StringLiteral`
-    var ast = babylon.parse(code)
-    var nodesByType = {}
+    let ast = babylon.parse(code);
+    let nodesByType = {};
+
+    traverse(ast, {
+        enter: function (path) {
+            let { type } = path.node;
+			if (!nodesByType[type]) {
+				nodesByType[type] = 0;
+            }
+
+			nodesByType[type]++;
+		}
+    });
     
-    return nodesByType
+    return nodesByType;
 }
 
 // Try your code on real files! Change SHOW_STATS to true
